@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F8136FC1FE6DD8800EAD181 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8136FB1FE6DD8800EAD181 /* MainMenu.xib */; };
+		2FC6C3651FE70E98003BC343 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6C3641FE70E98003BC343 /* Package.swift */; };
 		2FCA9CB11FE15F200071A62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA9CB01FE15F200071A62C /* AppDelegate.swift */; };
 		2FCA9CB31FE15F200071A62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FCA9CB21FE15F200071A62C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2F41A5641FE16B97001D3D44 /* op2fvpn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = op2fvpn.entitlements; sourceTree = "<group>"; };
+		2F8136FB1FE6DD8800EAD181 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		2FC6C3641FE70E98003BC343 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		2FCA9CAD1FE15F200071A62C /* op2fvpn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = op2fvpn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FCA9CB01FE15F200071A62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FCA9CB21FE15F200071A62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,8 +53,10 @@
 		2FCA9CAF1FE15F200071A62C /* op2fvpn */ = {
 			isa = PBXGroup;
 			children = (
+				2F8136FB1FE6DD8800EAD181 /* MainMenu.xib */,
 				2F41A5641FE16B97001D3D44 /* op2fvpn.entitlements */,
 				2FCA9CB01FE15F200071A62C /* AppDelegate.swift */,
+				2FC6C3641FE70E98003BC343 /* Package.swift */,
 				2FCA9CB21FE15F200071A62C /* Assets.xcassets */,
 				2FCA9CB71FE15F210071A62C /* Info.plist */,
 			);
@@ -89,7 +95,7 @@
 				TargetAttributes = {
 					2FCA9CAC1FE15F200071A62C = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -122,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FCA9CB31FE15F200071A62C /* Assets.xcassets in Resources */,
+				2F8136FC1FE6DD8800EAD181 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC6C3651FE70E98003BC343 /* Package.swift in Sources */,
 				2FCA9CB11FE15F200071A62C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,17 +257,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer: zack@apertron.net (G9URYP8S4H)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = E462TZPQFP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = op2fvpn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apertron.op2fvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -267,17 +276,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer: zack@apertron.net (G9URYP8S4H)";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = E462TZPQFP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = op2fvpn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.apertron.op2fvpn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
