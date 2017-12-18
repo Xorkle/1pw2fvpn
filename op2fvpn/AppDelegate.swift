@@ -32,11 +32,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSRunningApplication.current.activate(options: .activateIgnoringOtherApps)
 
     }
+    func invalid(text: String) -> Void {
+        activate()
+        dialogOKCancel(question: "A \(text) is required", text: "Please supply a \(text) parameter")
+        NSApp.terminate(self)
+
+    }
     
     @objc func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
-        var notWell = false
-        var user, password, host, port : String
-        user = ""; password = ""; host = ""; port = ""
+        var user, password, host, port, cert : String
+        user = ""; password = ""; host = ""; port = ""; cert = ""
 
         let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue
 
@@ -46,38 +51,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let user2: String = urlCo?.user {
             user =  user2
         } else {
-            notWell = true
-            activate()
-            dialogOKCancel(question: "A username is required", text: "Please supply a username parameter")
+            invalid(text: "user")
         }
 
         if let port2: Int = urlCo?.port {
             port =  String(port2)
         } else {
-            notWell = true
-            activate()
-            dialogOKCancel(question: "A port is required", text: "Please supply a port parameter")
+            invalid(text: "port")
         }
        
         if let password2: String = urlCo?.password {
             password = password2
         } else {
-            notWell = true
-            activate()
-            dialogOKCancel(question: "A password is required", text: "Please supply a password parameter")
+            invalid(text: "password")
         }
         
         if let host2: String = urlCo?.host {
             host =  host2
         } else {
-            notWell = true
-            activate()
-            dialogOKCancel(question: "A hostname is required", text: "Please supply a hostname parameter")
+            invalid(text: "host")
+        }
+        
+        if let queryItems = urlCo?.queryItems {
+            for queryItem in queryItems {
+                if queryItem.name == "cert" {
+                    if let cert2: String = queryItem.value {
+                        cert = cert2
+                    } else {
+                     invalid(text: "cert")
+                    }
+                }
+            }
+        } else {
+            invalid(text: "cert")
         }
 
-        if (notWell) {
-          NSApp.terminate(self)
-        }
+       
 
         let myAppleScript = """
           tell application "iTerm2"
@@ -85,12 +94,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
           tell current window
           tell current session
-          write text "sudo openfortivpn \(host):\(port) -u \(user) -p \(password)"
+          write text "sudo openfortivpn  --trusted-cert '\(cert)' '\(host):\(port)' -u '\(user)' -p '\(password)'"
           end tell
           end tell
           end tell
           """
-        print(myAppleScript)
         var error: NSDictionary?
         if let scriptObject = NSAppleScript(source: myAppleScript) {
             if let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(
