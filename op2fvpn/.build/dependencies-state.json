@@ -1,0 +1,1 @@
+{"object": {"dependencies": [{"basedOn": null, "name": "SwiftShell", "repositoryURL": "https://github.com/kareman/SwiftShell.git", "state": {"checkoutState": {"branch": null, "revision": "ecf0544d740c8d729275ac3d52543511153909d6", "version": "4.0.0"}, "name": "checkout"}, "subpath": "SwiftShell.git--7315839884107259463"}]}, "version": 1}
