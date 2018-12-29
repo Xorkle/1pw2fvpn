@@ -6,6 +6,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     
+    func checkAccess() -> Bool{
+        //get the value for accesibility
+        let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
+        //set the options: false means it wont ask
+        //true means it will popup and ask
+        let options = [checkOptPrompt: true]
+        //translate into boolean value
+        let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary?)
+        return accessEnabled
+    }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -39,7 +49,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
     
+    
     @objc func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
+        if (!checkAccess()) {
+            dialogOKCancel(question: "Accessbility access is required", text: "Please grant.")
+            NSApp.terminate(self)
+        }
         var user, password, host, port, cert : String
         user = ""; password = ""; host = ""; port = ""; cert = ""
 
